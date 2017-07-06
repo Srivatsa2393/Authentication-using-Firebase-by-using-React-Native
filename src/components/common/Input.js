@@ -7,6 +7,11 @@ const Input = (props) => {
       <Text>
         {props.label}
       </Text>
+      <TextInput
+        value={this.props.value}
+        onChangeText={this.props.onChangeText}
+        style={{ height: 20, width: 100}}
+      />
     </View>
   );
 };
