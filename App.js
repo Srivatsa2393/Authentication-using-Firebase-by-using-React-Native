@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Header } from './components/common';
+import { Header, Button, Spinner } from './components/common';
 import firebase from 'firebase';
 import LoginForm from './components/LoginForm';
 
 export default class App extends React.Component {
-  state = { loggedIn: false };
+  state = { loggedIn: null };
 
   componentWillMount() {
     firebase.initializeApp({
@@ -25,11 +25,24 @@ export default class App extends React.Component {
     }
   });
   }
+
+  renderContent(){
+    switch(this.state.loggedIn){
+      case true:
+      return
+        <Button>Log Out</Button>;
+      case false:
+        return <LoginForm />;
+      default:
+        return <Spinner size="large" />;
+    }
+  }
+
   render() {
     return(
       <View style={{ flex: 1 }}>
         <Header headerText="Authentication" />
-        <LoginForm />
+        {this.renderContent()}
       </View>
     );
   }
