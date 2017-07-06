@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 import { Card, Button, CardSection, Input } from './common';
 
 class LoginForm extends React.Component{
-  state = { text: ''};
+  state = {
+    email: '',
+    password: ''
+  };
 
   render() {
     return(
@@ -11,12 +14,21 @@ class LoginForm extends React.Component{
         <CardSection>
           <Input
             label="Email"
-            value={this.state.text}
-            onChangeText={text => this.setState({ text })}
+            placeholder="user@gmail.com"
+            value={this.state.email}
+            onChangeText={email => this.setState({ email })}
           />
         </CardSection>
 
-        <CardSection></CardSection>
+        <CardSection>
+          <Input
+            secureTextEntry
+            label="Password"
+            placeholder="password"
+            value={this.state.password}
+            onChangeText={password => this.setState({ password })}
+          />
+        </CardSection>
 
         <CardSection>
           <Button>

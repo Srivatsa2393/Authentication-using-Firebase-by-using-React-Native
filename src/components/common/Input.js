@@ -8,10 +8,12 @@ const Input = (props) => {
         {props.label}
       </Text>
       <TextInput
+        placeholder={props.placeholder}
+        autoCorrect={false}
         style={styles.inputStyle}
-        value={this.props.value}
-        onChangeText={this.props.onChangeText}
-        style={{ height: 20, width: 100}}
+        value={props.value}
+        onChangeText={props.onChangeText}
+        secureTextEntry={props.secureTextEntry}
       />
     </View>
   );
