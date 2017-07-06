@@ -5,6 +5,8 @@ import firebase from 'firebase';
 import LoginForm from './components/LoginForm';
 
 export default class App extends React.Component {
+  state = { loggedIn: false };
+
   componentWillMount() {
     firebase.initializeApp({
     apiKey: "AIzaSyAGde8BY3k3JIg2ktes7OvmZuKOFXI0R1Y",
@@ -13,7 +15,15 @@ export default class App extends React.Component {
     projectId: "authentication-for-reactnative",
     storageBucket: "",
     messagingSenderId: "311397383975"
-  })
+  });
+
+  firebase.auth().onAuthStateChange((user) => {
+    if(user){
+      this.setState({ loggedIn: true });
+    }else{
+      this.setState({ loggedIn: false });
+    }
+  });
   }
   render() {
     return(
